@@ -1,0 +1,180 @@
+#:import App_Bar screens.app_bar.App_Bar
+#:import Multiadd_Scr screens.multiadd_scr.Multiadd_Scr
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import F kivy.factory.Factory
+#:import Factory kivy.factory.Factory
+#:import arabic_reshaper arabic_reshaper
+
+
+<MainWid>:
+	canvas:
+		Color:
+			rgb:1,1,1
+		Rectangle:
+			size:self.size
+			pos:self.pos
+
+
+
+<ElementCard@MDCard>:
+	md_bg_color: 0, 42/255, 76/255, 1
+    #color:get_color_from_hex('002A4C')   #Main Color '7f00ff'
+    padding: dp(5)
+	spacing: dp(5)
+	radius: dp(10)
+	ripple_behavior:True
+	image:''
+	text:""
+	desc_text:''
+	sub_text:''
+	orientation: 'vertical'
+	Image:
+	    source:root.image
+	MDBoxLayout:
+	    orientation: 'vertical'
+	    MDLabel:
+	        halign:"center"
+	        text:root.text
+			color: 'white'
+        MDLabel:
+	        halign:"center"
+	        # font_style:"arial"
+	        text:root.sub_text
+			color: 'white'
+        MDLabel:
+	        halign:"center"
+	        text:root.desc_text
+			color: 'white'
+<StartWid>:
+	MDBoxLayout:
+		MDFloatLayout:
+			md_bg_color: 1, 1, 1, 1
+			Image:
+				source: "images/welcome.gif"
+				pos_hint: {"center_x": .5, "center_y": .65}
+				allow_stretch: True
+				anim_delay: 0.1
+				anim_loop: 3
+			MDLabel:
+				text: "R O F O X  !"
+				font_name: "font/Roboto-Bold.ttf"
+				font_size: "23sp"
+				pos_hint: {"center_y": .38}
+				halign: "center"
+				color: rgba(34, 34, 34, 255)
+			MDLabel:
+				text: "About: This is first app test for me"
+				#font_name: "Bpoppins"
+				font_size: "13sp"
+				size_hint_x: .85
+				pos_hint: {"center_x": .5, "center_y": .3}
+				halign: "center"
+				color: rgba(127, 127, 127, 255)
+			Button:
+				text: "Login"
+				background_color: 0, 0, 0, 0
+				size_hint: .79, .08
+				pos_hint: {"center_x": .5, "center_y": .18}
+				canvas.before:
+					Color:
+						rgb: 0, 42/255, 76/255, 1
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						radius: [2]
+				on_release:
+					root.create_screen('login')
+					#root.create_screen('testscr')
+					root.direction='left'
+
+
+<MainWidow>:
+    MDScreen:
+		MDBoxLayout:
+            orientation:'vertical'
+
+			MDTopAppBar:
+				title: "MDBottomAppBar"
+				right_action_items: [["dots-vertical", lambda x: app.callback_1()], ["clock", lambda x: app.callback_2()]]
+				md_bg_color: 0, 42/255, 76/255, 1
+
+
+			ScrollView
+				MDGridLayout:
+					size_hint_y: .9
+					cols:3
+					padding:dp(50)
+					spacing:dp(10)
+
+					ElementCard:
+						image:"images/navigation.png"
+						main_text: "like"
+						sub_text:"Navigation"
+						desc_text:""
+						on_release:
+							root.create_screen('testscr')
+							root.direction='left'
+					ElementCard:
+						image:"images/multiscr.png"
+						main_text: "like"
+						sub_text:"Multi Screen"
+						desc_text:""
+						on_release:
+							root.create_screen('multiaddscr')
+							root.direction='left'
+					ElementCard:
+						image:"images/test.png"
+						main_text: "like"
+						sub_text:"Tet screen"
+						desc_text:""
+						on_release:
+							root.create_screen('testscr')
+							root.direction='left'
+					ElementCard:
+						image:"images/test.png"
+						main_text: "like"
+						sub_text:"Load Data"
+						desc_text:""
+						on_release:
+							root.create_screen('loaddata')
+							root.direction='left'
+					ElementCard:
+						image:"images/test.png"
+						main_text: "like"
+						sub_text:"Empty"
+						#desc_text:"contact us"
+					ElementCard:
+						image:"images/test.png"
+						main_text: "like"
+						sub_text:"new"
+						#desc_text:"access wifi"
+						on_release:
+							root.create_screen('additem')
+			MDBoxLayout:
+				adaptive_height: True
+				orientation:'vertical'
+				md_bg_color: 0, 42/255, 76/255, 1
+
+				MDBottomNavigation
+					selected_color_background: "orange"
+					text_color_active: "lightgrey"
+
+					MDBottomNavigationItem:
+						name: 'screen 1'
+						text: 'home'
+						color: 0, 42/255, 76/255, 1
+						icon: 'images/home.png'
+						badge_icon: "numeric-10"
+
+
+					MDBottomNavigationItem:
+						name: 'screen 2'
+						text: 'Twitter'
+						icon: 'images/config.png'
+						badge_icon: "numeric-5"
+
+					MDBottomNavigationItem:
+						name: 'screen 3'
+						text: 'LinkedIN'
+						icon: 'images/Money.png'
+

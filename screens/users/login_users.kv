@@ -1,0 +1,115 @@
+<LoginScreen>:
+	MDScreen:
+		MDFloatLayout:
+			md_bg_color: 1, 1, 1, 1
+			Image:
+				source: "images/login.jpg"
+				pos_hint: {"center_x": .5, "center_y": .80}
+			MDLabel:
+				text: "Login"
+				#font_name: "Bpoppins"
+				font_size: "23sp"
+				pos_hint: {"center_y": .60}
+				halign: "center"
+				color:get_color_from_hex('002a4c')
+				#color: rgba(34, 34, 34, 255)
+			MDFloatLayout:
+				size_hint: .85, .08
+				pos_hint: {"center_x": .5, "center_y": .50}
+				MDLabel:
+					text: "username"
+					font_name: "font/Roboto-Bold.ttf"
+					color:get_color_from_hex('002a4c')
+					font_size: "14sp"
+					pos_hint: {"center_x": .5, "center_y": .9}
+
+				TextInput:
+					id:username_field
+					mode: "rectangle"
+					font_name:'arial.ttf'
+					size_hint_y: .99
+					pos_hint: {"center_x": .5, "center_y": .4}
+					background_color: 0, 0, 0, 0
+					cursor_color: 0, 0, 0, 1
+					cursor_width: "2sp"
+					foreground_color: 120/255, 120/255, 120/255, 1
+					font_size: "17sp"
+					multiline: False
+					padding: 10
+					required: True
+					helper_text_mode: "on_error"
+					helper_text: "Enter Password"
+				Image:
+					source:'images/User.png'
+					pos_hint: {"center_x": .96, "center_y": .5}
+				MDFloatLayout:
+					pos_hint: {"center_x": .5, "center_y": 0}
+					size_hint_y: .03
+					md_bg_color: 120/255, 120/255, 120/255, 1
+			MDFloatLayout:
+				size_hint: .85, .08
+				pos_hint: {"center_x": .5, "center_y": .39}
+				MDLabel:
+					text: "password"
+					font_size: "14sp"
+					font_name: "font/Roboto-Bold.ttf"
+					color:get_color_from_hex('002a4c')
+					pos_hint: {"center_x": .5, "center_y": .9}
+				TextInput:
+					id:pwd_field
+					size_hint_y: .99
+					pos_hint: {"center_x": .5, "center_y": .4}
+					background_color: 0, 0, 0, 0
+					cursor_color: 0, 0, 0, 1
+					cursor_width: "2sp"
+					foreground_color: 120/255, 120/255, 120/255, 1
+					font_size: "17sp"
+					multiline: False
+					padding: 10
+					password: True
+					required: True
+					helper_text_mode: "on_error"
+					helper_text: "Enter Password"
+				Image:
+					source:'images/Login.png'
+					pos_hint: {"center_x": .96, "center_y": .5}
+				MDFloatLayout:
+					pos_hint: {"center_x": .5, "center_y": 0}
+					size_hint_y: .03
+					md_bg_color: 120/255, 120/255, 120/255, 1
+			MDLabel:
+				id: info
+				text:''
+				color: 'red'
+				pos_hint: {"center_x": .55, "center_y": .30}
+			Button:
+				text: "Login"
+				background_color: 0, 0, 0, 0
+				size_hint: .79, .08
+				pos_hint: {"center_x": .5, "center_y": .20}
+				canvas.before:
+					Color:
+						rgb: 0, 42/255, 76/255, 1
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						radius: [12]
+				on_release:
+					root.validate_user()
+					#root.create_screen('mainwindow')
+					#root.direction='left'
+			Button:
+				text: "Create new account"
+				background_color: 0, 0, 0, 0
+				size_hint: .79, .08
+				pos_hint: {"center_x": .5, "center_y": .10}
+				canvas.before:
+					Color:
+						rgb: 0, 42/255, 76/255, 1
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						radius: [12]
+				on_release:
+					root.create_screen('createuser')
+					root.direction='left'

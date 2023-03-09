@@ -1,0 +1,94 @@
+#:import Multiadd_Scr screens.multiadd_scr.Multiadd_Scr
+##:import validate_users_create screens.createuser.CreateUser
+##:import CreateUser screens.createuser.CreateUser
+#:import Multiadd_Scr screens.multiadd_scr.Multiadd_Scr
+
+<CreateUser>
+	MDBoxLayout:
+		canvas:
+			Color:
+				rgb: 0, 42/255, 76/255, 1
+			Rectangle:
+				size:self.size
+				pos:self.pos
+
+		FloatLayout:
+			pos_hint:{'x':.0,'y':.0}
+			size_hint:1,.95
+			canvas.before:
+                Color:
+                    rgba:get_color_from_hex('#ffffff')
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[50,50,0,0]
+			MDLabel:
+				text: "New User"    # الكود ده لاضافة مستخدم
+				#font_name: "Bpoppins"
+				font_size: "23sp"
+				pos_hint: {"center_y": .95}
+				halign: "center"
+				color:get_color_from_hex('002a4c')
+				#color: rgba(34, 34, 34, 255)
+			MDTextField:
+				id: username_field
+				font_name:'arial.ttf'
+				pos_hint:{'x':.1,'y':.8}
+				size_hint_x:.8
+				hint_text:'User Name'
+				color_mode:'custom'
+				line_color_focus:get_color_from_hex('002a4c')
+				#font_name: 'font/Roboto-Bold.ttf'
+			MDTextField:
+				id: pwd_field
+				pos_hint:{'x':.1,'y':.7}
+				size_hint_x:.8
+				hint_text:'Password'
+				color_mode:'custom'
+				line_color_focus:get_color_from_hex('002a4c')
+			MDTextField:
+				id: txt_confirm
+				pos_hint:{'x':.1,'y':.6}
+				size_hint_x:.8
+				hint_text:'Confirm Password'
+				color_mode:'custom'
+				line_color_focus:get_color_from_hex('002a4c')
+
+			MDLabel:
+				id: info
+				theme_text_color: "Custom"
+				color: 'red'
+				text: 'xxxx'
+				font_size: "20sp"
+				pos_hint: {"center_x": .6, "center_y": .58}
+				#pos_hint: {"center_y": .58}
+				#halign: "left"
+
+			Button:
+				text: "Create account"
+				background_color: 0, 0, 0, 0
+				size_hint: .79, .08
+				pos_hint: {"center_x": .5, "center_y": .3}
+				canvas.before:
+					Color:
+						rgb: 0, 42/255, 76/255, 1
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						radius: [12]
+				on_release: root.validate_users()
+					#root.validate_users()  # from main.py
+
+			Button:
+				text: "Back"
+				background_color: 0, 0, 0, 0
+				size_hint: .79, .08
+				pos_hint: {"center_x": .5, "center_y": .2}
+				canvas.before:
+					Color:
+						rgb: 0, 42/255, 76/255, 1
+					RoundedRectangle:
+						size: self.size
+						pos: self.pos
+						radius: [12]
+
